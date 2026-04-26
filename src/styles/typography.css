@@ -56,4 +56,59 @@
     font-weight: var(--shiki-dark-font-weight) !important;
     text-decoration: var(--shiki-dark-text-decoration) !important;
   }
+
+  /* ===== Python Notebook Output Blocks ===== */
+  .py-exec-output {
+    @apply relative my-5 rounded-b-lg bg-muted/30 px-4 py-3;
+    margin-top: -0.5rem;
+  }
+
+  .py-exec-label {
+    @apply absolute top-0 right-3 -translate-y-1/2 rounded-full bg-accent/15 px-2.5 py-0.5 text-xs font-semibold tracking-wide text-accent;
+  }
+
+  .py-exec-pre {
+    @apply m-0 overflow-x-auto border-0 bg-transparent p-0 text-sm leading-relaxed text-foreground;
+    font-family: "Vazir-Code", monospace;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+
+  .py-exec-figure {
+    @apply flex flex-col items-center;
+  }
+
+  .py-exec-img {
+    @apply my-2 max-w-full rounded border-0;
+  }
+
+  .py-exec-error .py-exec-label {
+    @apply bg-red-500/15 text-red-500;
+  }
+
+  .py-exec-error .py-exec-pre {
+    @apply text-red-400;
+  }
+
+  html[data-theme="dark"] .py-exec-output {
+    @apply bg-muted/50;
+  }
+
+  html[data-theme="dark"] .py-exec-img {
+    @apply rounded border border-border;
+  }
+
+  /* Remove top border-radius from code block when followed by output */
+  .prose pre:has(code) {
+    @apply rounded-lg;
+  }
+
+  .prose .py-exec-output {
+    @apply rounded-t-none;
+  }
+
+  /* Override prose img defaults for exec output images */
+  .prose .py-exec-img {
+    @apply !my-2 border-0;
+  }
 }

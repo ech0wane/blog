@@ -4,6 +4,7 @@ import sitemap from "@astrojs/sitemap";
 import remarkToc from "remark-toc";
 import remarkCollapse from "remark-collapse";
 import { SITE } from "./src/config";
+import remarkPythonExec from "./src/plugins/remark-python-exec.mjs";
 import {
   DEFAULT_LOCALE,
   LOCALES_TO_LANG,
@@ -15,8 +16,7 @@ import rehypeKatex from "rehype-katex";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://echowane.github.io",
-  base: "/blog",
+  site: "https://blog.ech0wane.ir",
   output: "static",
   i18n: {
     locales: SUPPORTED_LOCALES,
@@ -33,6 +33,7 @@ export default defineConfig({
   ],
   markdown: {
     remarkPlugins: [
+      remarkPythonExec,
       remarkMath,
       [
         remarkToc,
